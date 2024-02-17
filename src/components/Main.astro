@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="header">
+    <h1>langur</h1>
+  </div>
+  <div class="content">
+    
+  </div>
+  <div class="footer">
+    <nav>
+      <i class="icon" id="icon1"></i>
+      <i class="icon" id="icon2"></i>
+      <i class="icon" id="icon3"></i>
+    </nav>
+  </div>
+</div>
+
+<style>
+  /**
+   * TODO: Update fonts to design language
+   */
+  body {
+    margin: 0;
+    font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+      sans-serif;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+  .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+  }
+  .icon {
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .active {
+    fill: #000;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      icons.forEach(i => i.classList.remove('active'));
+      icon.classList.add('active');
+    });
+  });
+</script>

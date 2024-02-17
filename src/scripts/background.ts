@@ -1,1 +1,6 @@
-/* This is the background script, also known as the service worker. */
+chrome.action.onClicked.addListener((tab) => {
+  if (tab.id) {
+    chrome.tabs.sendMessage(tab.id, 'toggle');
+    console.log('message sent');
+  }
+});
