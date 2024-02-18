@@ -1,0 +1,31 @@
+---
+const { isForeign } = Astro.props;
+---
+
+<div class="container">
+    <div class="grade-type">{isForeign ? "Website" : "Current"} difficulty:</div>
+    <div class="readability">3.7</div>
+</div>
+
+<style>
+    .container {
+        width: 300px;
+        height: 60px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+    }
+    .grade-type {
+        font-size: 1.2rem;
+        margin-right: 30px;
+    }
+    .readability {
+        font-size: 1.5rem;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+</style>

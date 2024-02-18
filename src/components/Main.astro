@@ -1,17 +1,38 @@
+---
+import Grade from './Grade.astro';
+import Recommender from './Recommender.astro';
+import Stats from './Stats.astro';
+import QueryBox from './QueryBox.astro';
+let htmlLang;
+---
+
 <div class="container">
   <div class="header">
-    <h1>langur</h1>
+    <div class="title"><h1>langur</h1></div>
+    <div class="dashboard-redirect">
+      <a href="https://www.google.com">Dashboard</a>
+      <ion-icon name="exit-outline" size="medium"></ion-icon>
+    </div>
   </div>
   <div class="content">
-    
+    <Grade isForeign={htmlLang === 'es'} />
+    {htmlLang ? (htmlLang === 'en' ? <Stats /> : <Recommender />) : <div></div>}
+    <QueryBox />
   </div>
-  <div class="footer">
-    <nav>
-      <i class="icon" id="icon1"></i>
-      <i class="icon" id="icon2"></i>
-      <i class="icon" id="icon3"></i>
+    <nav class="footer">
+      <div class="footer-icon">
+        <ion-icon name="person-circle-outline" size="large"></ion-icon>
+        <span>Profile</span>
+      </div>
+      <div class="footer-icon">
+        <ion-icon name="reader-outline" size="large"></ion-icon>
+        <span>Reading</span>
+      </div>
+      <div class="footer-icon">
+        <ion-icon name="settings-outline" size="large"></ion-icon>
+        <span>Settings</span>
+      </div>
     </nav>
-  </div>
 </div>
 
 <style>
@@ -23,33 +44,81 @@
     font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
       sans-serif;
   }
-  .header {
+
+  h1 { margin: 0 }
+  
+  .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    width: 400px;
+    height: calc(100% - 180px);
+    position: absolute;
+    top: 80px;
+  }
+  .header {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 400px;
+    top: 0;
   }
   .footer {
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     height: 100px;
+    width: 400px;
+    bottom: 0;
   }
   .container {
     height: 100vh;
     display: flex;
+    flex-direction: column; /* Arrange items from top to bottom */
     justify-content: center;
     align-items: center;
     width: 400px;
-  }
-  .icon {
-    font-size: 24px;
-    margin-right: 10px;
-    cursor: pointer;
+    border: 1px black;
+    background-color: #eee;
   }
   .active {
     fill: #000;
     font-weight: bold;
+  }
+  .title {
+    height: 100%;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: left;
+    padding-left: 40px;
+    align-items: center;
+    width: 60%;
+  }
+  .dashboard-redirect {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+  }
+  .dashboard-redirect a {
+    font-size: 1rem;
+    padding-right: 10px;
+  }
+  .footer-icon {
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .footer-icon span {
+    font-size: 0.8rem;
+    padding-top: 5px;
   }
 </style>
 
@@ -61,4 +130,7 @@
       icon.classList.add('active');
     });
   });
+  htmlLang = document.documentLang.en;
 </script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
