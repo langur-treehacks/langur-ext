@@ -14,6 +14,8 @@ import Footer from "./Footer.astro";
     <Grade />
     <div class="dividerLine"></div>
     <Stats />
+    <div class="dividerLine"></div>
+    <Recommender />
   </div>
 
   <Footer />
@@ -31,17 +33,6 @@ import Footer from "./Footer.astro";
       sans-serif;
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    height: calc(100% - 180px);
-    position: absolute;
-    top: 80px;
-  }
-
   .container {
     height: 100vh;
     display: flex;
@@ -53,12 +44,21 @@ import Footer from "./Footer.astro";
     background-color: #eee;
   }
   .extension-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
     height: 70vh;
+    padding: 20px;
   }
   .dividerLine {
-    border-top: 1px solid #a0aec0; /* Equivalent to border-t border-gray-500 in Tailwind */
+    border-top: 1px solid #9399a0; /* Equivalent to border-t border-gray-500 in Tailwind */
     margin-top: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
     margin-bottom: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
+    height: 1px;
+    width: 380px;
+    background-color: #5f6772;
   }
 </style>
 

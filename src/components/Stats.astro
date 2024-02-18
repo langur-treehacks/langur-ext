@@ -1,6 +1,69 @@
 <div class="stats-container">
-  <div class="title"><h1>Page Stats</h1></div>
+  <p class="stats-header">Page Stats</p>
+  <div class="row-container">
+    <p class="stat-name">No. of sentences translated</p>
+    <p class="stat-value">7</p>
+  </div>
+  <div class="row-container">
+    <p class="stat-name">No. of words queried</p>
+    <p class="stat-value">12</p>
+  </div>
 </div>
+
+<style>
+  @font-face {
+    font-family: "Poligon";
+    src: url("/fonts/Poligon Regular.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Bold";
+    src: url("/fonts/Poligon Bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Light";
+    src: url("/fonts/Poligon Light.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Medium";
+    src: url("/fonts/Poligon Medium.otf") format("opentype");
+  }
+
+  .stats-container {
+    font-family: "Poligon-Light";
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .stats-header {
+    font-size: 1.5rem; /* Equivalent to text-6xl in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+    font-family: "Poligon-Bold";
+    margin-top: 10px;
+  }
+
+  .row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 0.25rem; /* Equivalent to py-3 in Tailwind */
+    padding-bottom: 0.25rem; /* Equivalent to py-3 in Tailwind */
+  }
+
+  .stat-name {
+    font-size: 1.125rem; /* Equivalent to text-lg in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+  }
+
+  .stat-value {
+    font-size: 1.125rem; /* Equivalent to text-lg in Tailwind */
+    /* No need for font-weight adjustment, as it's not specified in Tailwind for statValue */
+  }
+</style>
 
 <script>
   import { getLang } from "../scripts/internal/get-lang";

@@ -1,12 +1,110 @@
 <div class="recommend-container">
-  <div class="title">
-    <h1>Further Reading</h1>
-    <h2>We'll find more articles for you to read!</h2>
-  </div>
-  <div class="cards">
-    <div class="generate-cards">Show me!</div>
+  <p class="recommend-header">Further Reading</p>
+  <div class="article-picker">
+    <div class="article-card">
+      <p class="article-header">
+        Sample news heading...
+      </p>
+      <p class="article-subheader">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      </p>
+    </div>
+
+    <div class="article-card">
+      <p class="article-header">
+        Sample news heading...
+      </p>
+      <p class="article-subheader">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      </p>
+    </div>
+
+    <div class="article-card">
+      <p class="article-header">
+        Sample news heading...
+      </p>
+      <p class="article-subheader">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      </p>
+    </div>
   </div>
 </div>
+
+<style>
+  @font-face {
+    font-family: "Poligon";
+    src: url("/fonts/Poligon Regular.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Bold";
+    src: url("/fonts/Poligon Bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Light";
+    src: url("/fonts/Poligon Light.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Medium";
+    src: url("/fonts/Poligon Medium.otf") format("opentype");
+  }
+
+  .recommend-container {
+    font-family: "Poligon-Light";
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .recommend-header {
+    font-size: 1.5rem; /* Equivalent to text-6xl in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+    font-family: "Poligon-Bold";
+    margin-top: 10px;
+  }
+
+  .article-picker {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border-color: #9399a0;
+    border-width: 1px;
+    border-style: solid;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .article-card {
+    border-radius: 30px;
+    width: 100%;
+    border: 2px #5f6772 solid;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .article-card:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .article-header {
+    font-size: 1rem; /* Equivalent to text-base in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+    max-lines: 1;
+    text-overflow: ellipsis;
+  }
+  .article-subheader {
+    font-size: 1rem; /* Equivalent to text-base in Tailwind */
+    font-weight: normal; /* Equivalent to font-bold in Tailwind */
+    max-lines: 3;
+    text-overflow: ellipsis;
+  }
+</style>
 
 <script>
   import { getLang } from "../scripts/internal/get-lang";
