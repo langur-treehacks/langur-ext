@@ -3,17 +3,52 @@ const { original, translated } = Astro.props;
 ---
 
 <div class="popup-container">
-  <div class="original">{original}</div>
-  <hr />
-  <div class="translated">{translated}</div>
+  <p class="popup-header">Translations:</p>
+  <div class="popup-content">
+    <div class="original">{original ? original : "Spanish Text"}</div>
+    <div class="dividerLine"></div>
+    <div class="translated">{translated ? translated : "English Text"}</div>
+  </div>
 </div>
 
 <style>
   .popup-container {
-    width: 100px;
+    font-family: "Poligon-Light";
+    width: 100%;
     height: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  
+
+  .popup-header {
+    font-size: 1.5rem; /* Equivalent to text-6xl in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+    font-family: "Poligon-Bold";
+    margin-top: 10px;
+  }
+  .dividerLine {
+    border-top: 1px solid #9399a0; /* Equivalent to border-t border-gray-500 in Tailwind */
+    margin-top: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
+    margin-bottom: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
+    height: 1px;
+    width: 250px;
+    background-color: #5f6772;
+  }
+  .popup-content {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border-color: #9399a0;
+    border-width: 1px;
+    border-style: solid;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
   }
 </style>
 
@@ -29,7 +64,7 @@ const { original, translated } = Astro.props;
       const translatedTextElement = document.querySelector(
         ".translated",
       ) as HTMLElement;
-      const translatedText = await translateText(req.data, "spanish");
+      const translatedText = await translateText(req.data, "english");
       translatedTextElement.innerText = translatedText;
     }
   });

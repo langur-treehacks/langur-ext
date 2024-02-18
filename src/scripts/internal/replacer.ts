@@ -15,7 +15,7 @@ export const extractSite = async (): Promise<String> => {
 
 export const getReplacements = async (content: String): Promise<String[][]> => {
   try {
-    const response = await axios.post("http://127.0.0.1:5000/translate", {
+    const response = await axios.post("http://127.0.0.1:8080/translate", {
       Article: content,
       Readability: 5,
       Language: "spanish",
@@ -48,7 +48,7 @@ export const replaceText = (replacements: String[][]) => {
 };
 
 export const translateText = async (text: String, language: String) => {
-  const response = await axios.post("http://127.0.0.1:5000/meaning", {
+  const response = await axios.post("http://127.0.0.1:8080/meaning", {
     Target: text,
     Language: language,
   });

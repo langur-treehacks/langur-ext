@@ -14,12 +14,14 @@ import TranslatePopup from "./TranslatePopup.astro";
   <div class="extension-body" id="ext-body">
     <Grade />
     <div class="dividerLine"></div>
+    <TranslatePopup original="" translated="" />
+    <div class="dividerLine"></div>
     <Stats />
     <div class="dividerLine"></div>
     <Recommender />
+    
   </div>
   <div class="settings-body" id="settings-body">Settings Page</div>
-  <TranslatePopup original="" translated="" />
   <Footer />
 </div>
 
@@ -51,15 +53,16 @@ import TranslatePopup from "./TranslatePopup.astro";
     justify-content: space-between;
     align-items: center;
     width: 400px;
-    height: 70vh;
+    height: 80vh;
     padding: 20px;
+    overflow-y: scroll;
   }
   .dividerLine {
     border-top: 1px solid #9399a0; /* Equivalent to border-t border-gray-500 in Tailwind */
     margin-top: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
     margin-bottom: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
     height: 1px;
-    width: 380px;
+    width: 350px;
     background-color: #5f6772;
   }
 
