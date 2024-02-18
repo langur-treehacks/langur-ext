@@ -1,10 +1,12 @@
 import { addHoverListener } from "./internal/hover";
+import { popupOpenListener } from "./internal/popup";
 import { extractSite, getReplacements, replaceText } from "./internal/replacer";
 import { sidebarCloseListener, sidebarOpenListener } from "./internal/sidebar";
 import { retrieveValueByKey } from "./internal/storage";
 
 chrome.runtime.onMessage.addListener(sidebarOpenListener);
 document.addEventListener("click", sidebarCloseListener);
+document.addEventListener("click", popupOpenListener);
 async function replace() {
   const langurDisabled = await retrieveValueByKey("langurDisabled");
   if (langurDisabled) {
