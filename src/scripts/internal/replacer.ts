@@ -39,10 +39,18 @@ export const replaceText = (replacements: String[][]) => {
         const [original, replacementText] = replacement;
         replacedHTML = replacedHTML.replace(
           new RegExp(original.toString(), "g"),
-          `<span class="langur-highlight">${replacementText}</span>`,
+          `<mark class="langur-highlight" style="background-color: #84CDEE; cursor: help">${replacementText}</mark>`,
         );
       }
       node.innerHTML = replacedHTML;
     }
   });
+};
+
+export const translateText = async (text: String, language: String) => {
+  const response = await axios.post("http://127.0.0.1:5000/meaning", {
+    Text: text,
+    Language: language,
+  });
+  return response.data;
 };

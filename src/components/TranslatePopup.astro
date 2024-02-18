@@ -1,0 +1,36 @@
+---
+const { original, translated } = Astro.props;
+---
+
+<div class="popup-container">
+  <div class="original">{original}</div>
+  <hr />
+  <div class="translated">{translated}</div>
+</div>
+
+<style>
+  .popup-container {
+    width: 100px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+</style>
+
+<script>
+  import { translateText } from "../scripts/internal/replacer";
+  chrome.runtime.onMessage.addListener(async (req) => {
+    console.log("lmao");
+    if (req.message === "openPopup") {
+      const originalTextElement = document.querySelector(
+        ".original",
+      ) as HTMLElement;
+      originalTextElement.innerText = req.data;
+      const translatedTextElement = document.querySelector(
+        ".translated",
+      ) as HTMLElement;
+      const translatedText = await translateText(req.data, "spanish");
+      translatedTextElement.innerText = translatedText;
+    }
+  });
+</script>
