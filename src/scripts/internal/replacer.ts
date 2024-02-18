@@ -15,9 +15,22 @@ export const extractSite = async (): Promise<String> => {
 
 export const getReplacements = async (content: String): Promise<String[][]> => {
   try {
+    const url = new URL(
+      window.location.href
+    );
+    const params = url.searchParams;
+    let difflevel = params.get("difflevel");
+    let readability = null;
+    if (difflevel !== null)
+    {
+      let diffnum = difflevel as unknown as number;
+      readability = diffnum * 2;
+    }
+    console.log("HEREEEEEEEE");
+    console.log(readability);
     const response = await axios.post("http://127.0.0.1:8080/translate", {
       Article: content,
-      Readability: 5,
+      Readability: readability ? readability : 5,
       Language: "spanish",
     });
     return response.data.data;

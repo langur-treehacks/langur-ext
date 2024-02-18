@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@extractus/article-extractor": "^8.0.6",
+    "@types/qs": "^6.9.11",
     "astro": "^3.2.1",
     "axios": "^1.6.7",
     "bootstrap-icons": "^1.11.3",
