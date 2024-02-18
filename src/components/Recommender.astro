@@ -31,6 +31,7 @@
   async function generateCards() {
     try {
       const searchHistory = await getSearchHistory();
+      console.log(searchHistory);
       const articles = await getRecommendations(searchHistory);
       const cards = document.querySelector(".cards");
       if (cards) {
