@@ -1,6 +1,56 @@
-<div class="container">
-    <div class="description">
-        <h1>Further Reading</h1>
-    </div>
-    <div class="cards"></div>
+<div class="recommend-container">
+  <div class="title">
+    <h1>Further Reading</h1>
+    <h2>We'll find more articles for you to read!</h2>
+  </div>
+  <div class="cards">
+    <div class="generate-cards">Show me!</div>
+  </div>
 </div>
+
+<script>
+  import { getLang } from "../scripts/internal/get-lang";
+  import {
+    getRecommendations,
+    getSearchHistory,
+  } from "../scripts/internal/recommender";
+
+  getLang().then((language) => {
+    let container = document.querySelector(".stats-container");
+    if (!container) return;
+    if (language === "en") {
+      container.innerHTML = "";
+    }
+  });
+
+  const cardGenerator = document.querySelector(".generate-cards");
+  if (cardGenerator) {
+    cardGenerator.addEventListener("click", generateCards);
+  }
+
+  async function generateCards() {
+    try {
+      const searchHistory = await getSearchHistory();
+      const articles = await getRecommendations(searchHistory);
+      const cards = document.querySelector(".cards");
+      if (cards) {
+        cards.innerHTML = articles
+          .map((article) => {
+            // TODO: Clicking on the link should redirect the whole tab, not the iframe
+            return `
+          <a href=${article.url} class="card">
+            <div class="card-content">
+              <h3>${article.summary}</h3>
+              <p>${article.score}</p>
+            </div>
+          </a>
+        `;
+          })
+          .join("\n");
+      }
+    } catch (err) {
+      console.error(err);
+      // TODO: Settle error
+    }
+  }
+</script>

@@ -25,5 +25,6 @@
       "matches": ["https://*/*", "http://*/*"]
     }
   ],
-  "permissions": ["history"]
+  "permissions": ["history"],
+  "host_permissions": ["<all_urls>"]
 }

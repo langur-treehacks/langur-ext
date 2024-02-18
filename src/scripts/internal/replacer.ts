@@ -18,6 +18,7 @@ export const getReplacements = async (content: String): Promise<String[][]> => {
     const response = await axios.post('http://localhost:8080/translate', {
       Article: content,
       Readability: 5,
+      Language: 'spanish',
     });
     return response.data;
   } catch (err) {

@@ -1,9 +1,8 @@
 ---
-import Grade from './Grade.astro';
-import Recommender from './Recommender.astro';
-import Stats from './Stats.astro';
-import QueryBox from './QueryBox.astro';
-let htmlLang;
+import Grade from "./Grade.astro";
+import Recommender from "./Recommender.astro";
+import Stats from "./Stats.astro";
+import QueryBox from "./QueryBox.astro";
 ---
 
 <div class="container">
@@ -11,42 +10,47 @@ let htmlLang;
     <div class="title"><h1>langur</h1></div>
     <div class="dashboard-redirect">
       <a href="https://www.google.com">Dashboard</a>
-      <ion-icon name="exit-outline" size="medium"></ion-icon>
+      <i class="bi bi-box-arrow-right"></i>
     </div>
   </div>
   <div class="content">
-    <Grade isForeign={htmlLang === 'es'} />
-    {htmlLang ? (htmlLang === 'en' ? <Stats /> : <Recommender />) : <div></div>}
-    <QueryBox />
+    <Grade />
+    <!-- <QueryBox /> -->
+    <Stats />
+    <Recommender />
   </div>
-    <nav class="footer">
-      <div class="footer-icon">
-        <ion-icon name="person-circle-outline" size="large"></ion-icon>
-        <span>Profile</span>
-      </div>
-      <div class="footer-icon">
-        <ion-icon name="reader-outline" size="large"></ion-icon>
-        <span>Reading</span>
-      </div>
-      <div class="footer-icon">
-        <ion-icon name="settings-outline" size="large"></ion-icon>
-        <span>Settings</span>
-      </div>
-    </nav>
+  <nav class="footer">
+    <div class="footer-icon">
+      <i class="bi bi-person-circle"></i>
+      <span>Profile</span>
+    </div>
+    <div class="footer-icon">
+      <i class="bi bi-book"></i>
+      <span>Reading</span>
+    </div>
+    <div class="footer-icon">
+      <i class="bi bi-gear"></i>
+      <span>Settings</span>
+    </div>
+  </nav>
 </div>
 
 <style>
   /**
    * TODO: Update fonts to design language
    */
+  @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
   body {
     margin: 0;
-    font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
       sans-serif;
   }
 
-  h1 { margin: 0 }
-  
+  h1 {
+    margin: 0;
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -118,19 +122,20 @@ let htmlLang;
   }
   .footer-icon span {
     font-size: 0.8rem;
-    padding-top: 5px;
+    padding-top: 0px;
+  }
+
+  .footer-icon i {
+    font-size: 2rem;
   }
 </style>
 
 <script>
-  const icons = document.querySelectorAll('.icon');
-  icons.forEach(icon => {
-    icon.addEventListener('click', () => {
-      icons.forEach(i => i.classList.remove('active'));
-      icon.classList.add('active');
+  const icons = document.querySelectorAll(".icon");
+  icons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      icons.forEach((i) => i.classList.remove("active"));
+      icon.classList.add("active");
     });
   });
-  htmlLang = document.documentLang.en;
 </script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

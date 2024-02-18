@@ -5,7 +5,8 @@
   "dependencies": {
     "@extractus/article-extractor": "^8.0.6",
     "astro": "^3.2.1",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "bootstrap-icons": "^1.11.3"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",
