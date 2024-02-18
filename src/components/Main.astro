@@ -10,13 +10,14 @@ import Footer from "./Footer.astro";
 <div class="container">
   <Navbar />
 
-  <div class="extension-body">
+  <div class="extension-body" id="ext-body">
     <Grade />
     <div class="dividerLine"></div>
     <Stats />
     <div class="dividerLine"></div>
     <Recommender />
   </div>
+  <div class="settings-body" id="settings-body">Settings Page</div>
 
   <Footer />
 </div>
@@ -60,14 +61,46 @@ import Footer from "./Footer.astro";
     width: 380px;
     background-color: #5f6772;
   }
+
+  .settings-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 70vh;
+    padding: 20px;
+  }
 </style>
 
 <script>
+  import { isReadingActive } from "../utils/store.js";
+
   const icons = document.querySelectorAll(".icon");
   icons.forEach((icon) => {
     icon.addEventListener("click", () => {
       icons.forEach((i) => i.classList.remove("active"));
       icon.classList.add("active");
     });
+  });
+
+  isReadingActive.subscribe((readingActive) => {
+    if (!readingActive) {
+      console.log(readingActive);
+      const extensionBody = document.getElementById("ext-body");
+      const settingsBody = document.getElementById("settings-body");
+      if (extensionBody !== null && settingsBody !== null) {
+        extensionBody.style.display = "none";
+        settingsBody.style.display = "flex";
+      }
+    } else {
+      console.log("here");
+      const extensionBody = document.getElementById("ext-body");
+      const settingsBody = document.getElementById("settings-body");
+      if (extensionBody !== null && settingsBody !== null) {
+        extensionBody.style.display = "flex";
+        settingsBody.style.display = "none";
+      }
+    }
   });
 </script>

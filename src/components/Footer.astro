@@ -1,13 +1,13 @@
 <nav class="footer">
-  <div class="footer-icon">
+  <div class="footer-icon" id="profile-button">
     <i class="bi bi-person-circle"></i>
     <span>Profile</span>
   </div>
-  <div class="footer-icon">
+  <div class="footer-icon" id="body-button">
     <i class="bi bi-book"></i>
     <span>Reading</span>
   </div>
-  <div class="footer-icon">
+  <div class="footer-icon" id="settings-button">
     <i class="bi bi-gear"></i>
     <span>Settings</span>
   </div>
@@ -37,9 +37,42 @@
   .footer-icon i {
     font-size: 2rem;
   }
+  .footer-icon:hover {
+    cursor: pointer;
+  }
 
   .active {
     fill: #000;
     font-weight: bold;
   }
 </style>
+
+<script>
+    import { isReadingActive } from '../utils/store.js';
+    function openSettings() {
+        isReadingActive.set(false);
+    }
+    function openBody() {
+        isReadingActive.set(true);
+    }
+    function openProfile() {
+        console.log("Here");
+        window.location.href = "http://localhost:3000/my-profile";
+    }
+    document.getElementById("settings-button").addEventListener("click", openSettings);
+    document.getElementById("body-button").addEventListener("click", openBody);
+    document.getElementById("profile-button").addEventListener("click", openProfile);
+
+    isReadingActive.subscribe(readingActive => {
+        if (readingActive)
+        {
+            document.getElementById("body-button").style.color = "#50b8e7";
+            document.getElementById("settings-button").style.color = "#000000";
+        }
+        else
+        {
+            document.getElementById("body-button").style.color = "#000000";
+            document.getElementById("settings-button").style.color = "#50b8e7";
+        }
+    });
+</script>
