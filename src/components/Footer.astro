@@ -48,31 +48,32 @@
 </style>
 
 <script>
-    import { isReadingActive } from '../utils/store.js';
-    function openSettings() {
-        isReadingActive.set(false);
-    }
-    function openBody() {
-        isReadingActive.set(true);
-    }
-    function openProfile() {
-        console.log("Here");
-        window.location.href = "http://localhost:3000/my-profile";
-    }
-    document.getElementById("settings-button").addEventListener("click", openSettings);
-    document.getElementById("body-button").addEventListener("click", openBody);
-    document.getElementById("profile-button").addEventListener("click", openProfile);
+  import { isReadingActive } from "../utils/store.js";
+  function openSettings() {
+    isReadingActive.set(false);
+  }
+  function openBody() {
+    isReadingActive.set(true);
+  }
+  function openProfile() {
+    console.log("Here");
+    window.open("http://127.0.0.1:3000/my-profile");
+  }
+  document
+    .getElementById("settings-button")
+    .addEventListener("click", openSettings);
+  document.getElementById("body-button").addEventListener("click", openBody);
+  document
+    .getElementById("profile-button")
+    .addEventListener("click", openProfile);
 
-    isReadingActive.subscribe(readingActive => {
-        if (readingActive)
-        {
-            document.getElementById("body-button").style.color = "#50b8e7";
-            document.getElementById("settings-button").style.color = "#000000";
-        }
-        else
-        {
-            document.getElementById("body-button").style.color = "#000000";
-            document.getElementById("settings-button").style.color = "#50b8e7";
-        }
-    });
+  isReadingActive.subscribe((readingActive) => {
+    if (readingActive) {
+      document.getElementById("body-button").style.color = "#50b8e7";
+      document.getElementById("settings-button").style.color = "#000000";
+    } else {
+      document.getElementById("body-button").style.color = "#000000";
+      document.getElementById("settings-button").style.color = "#50b8e7";
+    }
+  });
 </script>

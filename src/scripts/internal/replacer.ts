@@ -61,7 +61,7 @@ export const replaceText = (replacements: String[][]) => {
 };
 
 export const translateText = async (text: String, language: String) => {
-  const response = await axios.post("http://127.0.0.1:8080/meaning", {
+  const response = await axios.post("http://127.0.0.1:5000/meaning", {
     Target: text,
     Language: language,
   });

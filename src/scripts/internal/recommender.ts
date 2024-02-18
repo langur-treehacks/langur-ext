@@ -32,7 +32,7 @@ export const getRecommendations = async (
   searches: String[],
 ): Promise<RecommendationsResponse[]> => {
   try {
-    const response = await axios.post("http://127.0.0.1:8080/recommend", {
+    const response = await axios.post("http://127.0.0.1:5000/recommend", {
       SearchHistory: searches,
       Readability: 5,
       Language: "spanish",

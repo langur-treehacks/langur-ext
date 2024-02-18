@@ -1,35 +1,8 @@
 <div class="recommend-container">
   <p class="recommend-header">Further Reading</p>
-  <div class="article-picker">
-    <div class="article-card">
-      <p class="article-header">Sample news heading...</p>
-      <p class="article-subheader">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
-    </div>
-
-    <div class="article-card">
-      <p class="article-header">Sample news heading...</p>
-      <p class="article-subheader">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
-    </div>
-
-    <div class="article-card">
-      <p class="article-header">Sample news heading...</p>
-      <p class="article-subheader">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
-    </div>
+  <div class="article-picker"></div>
+  <div class="generate-cards">
+    <button>Generate Cards</button>
   </div>
 </div>
 
@@ -134,19 +107,31 @@
       const searchHistory = await getSearchHistory();
       console.log(searchHistory);
       const articles = await getRecommendations(searchHistory);
-      const cards = document.querySelector(".cards");
+      const cards = document.querySelector(".article-picker");
       if (cards) {
+        console.log(articles);
         cards.innerHTML = articles
           .map((article) => {
             // TODO: Clicking on the link should redirect the whole tab, not the iframe
             return `
-          <a href=${article.url} class="card">
-            <div class="card-content">
-              <h3>${article.summary}</h3>
-              <p>${article.score}</p>
-            </div>
-          </a>
-        `;
+              <div class="article-card" style="border-radius: 30px;
+    width: 100%;
+    border: 2px #5f6772 solid;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;">
+                <p class="article-header" style="font-size: 1rem;
+    font-weight: bold;
+    max-lines: 1;
+    text-overflow: ellipsis;">${article.url}</p>
+                <p class="article-subheader" style="font-size: 1rem;
+    font-weight: normal;
+    max-lines: 3;
+    text-overflow: ellipsis;">
+                  ${article.summary}
+                </p>
+              </div>
+            `;
           })
           .join("\n");
       }
