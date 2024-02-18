@@ -1,0 +1,71 @@
+---
+import externalLinkImage from "../assets/images/external-link.png";
+---
+
+<div class="navbarBody">
+  <div class="logo">
+    <p class="firstHalfHomeButtonText">lang</p>
+    <p class="secondHalfHomeButtonText">ur</p>
+  </div>
+  <div class="dashboard-redirect">
+    <a href="http://localhost:3000">
+        <img src={externalLinkImage.src}>
+    </a>
+  </div>
+</div>
+
+<style>
+  @font-face {
+    font-family: "Poligon";
+    src: url("/fonts/Poligon Regular.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Bold";
+    src: url("/fonts/Poligon Bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Light";
+    src: url("/fonts/Poligon Light.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Poligon-Medium";
+    src: url("/fonts/Poligon Medium.otf") format("opentype");
+  }
+
+  body {
+    font-family: "Poligon-Light";
+  }
+
+  .navbarBody {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem; /* Equivalent to p-6 in Tailwind, assuming default spacing */
+    z-index: auto; /* No direct equivalent to z-auto in plain CSS */
+    background-color: #50b8e7;
+    width: 400px;
+  }
+
+  .logo {
+    font-size: 2rem; /* Equivalent to text-6xl in Tailwind */
+    font-weight: bold; /* Equivalent to font-bold in Tailwind */
+    display: flex;
+    flex-direction: row; /* Equivalent to flex-row in Tailwind */
+    font-family: "Poligon-Bold";
+    margin-top: 14px;
+  }
+  .firstHalfHomeButtonText {
+    color: white; /* Equivalent to text-white in Tailwind */
+  }
+  .secondHalfHomeButtonText {
+    color: black; /* Equivalent to text-black in Tailwind */
+  }
+  .redirect-image {
+    height: 20px;
+    width: 20px;
+  }
+</style>

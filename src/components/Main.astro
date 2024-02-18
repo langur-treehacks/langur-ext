@@ -3,36 +3,20 @@ import Grade from "./Grade.astro";
 import Recommender from "./Recommender.astro";
 import Stats from "./Stats.astro";
 import QueryBox from "./QueryBox.astro";
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro";
 ---
 
 <div class="container">
-  <div class="header">
-    <div class="title"><h1>langur</h1></div>
-    <div class="dashboard-redirect">
-      <a href="https://www.google.com">Dashboard</a>
-      <i class="bi bi-box-arrow-right"></i>
-    </div>
-  </div>
-  <div class="content">
+  <Navbar />
+
+  <div class="extension-body">
     <Grade />
-    <!-- <QueryBox /> -->
+    <div class="dividerLine"></div>
     <Stats />
-    <Recommender />
   </div>
-  <nav class="footer">
-    <div class="footer-icon">
-      <i class="bi bi-person-circle"></i>
-      <span>Profile</span>
-    </div>
-    <div class="footer-icon">
-      <i class="bi bi-book"></i>
-      <span>Reading</span>
-    </div>
-    <div class="footer-icon">
-      <i class="bi bi-gear"></i>
-      <span>Settings</span>
-    </div>
-  </nav>
+
+  <Footer />
 </div>
 
 <style>
@@ -47,10 +31,6 @@ import QueryBox from "./QueryBox.astro";
       sans-serif;
   }
 
-  h1 {
-    margin: 0;
-  }
-
   .content {
     display: flex;
     flex-direction: column;
@@ -61,72 +41,24 @@ import QueryBox from "./QueryBox.astro";
     position: absolute;
     top: 80px;
   }
-  .header {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    width: 400px;
-    top: 0;
-  }
-  .footer {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 400px;
-    bottom: 0;
-  }
+
   .container {
     height: 100vh;
     display: flex;
     flex-direction: column; /* Arrange items from top to bottom */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 400px;
     border: 1px black;
     background-color: #eee;
   }
-  .active {
-    fill: #000;
-    font-weight: bold;
+  .extension-body {
+    height: 70vh;
   }
-  .title {
-    height: 100%;
-    font-size: 0.8rem;
-    display: flex;
-    justify-content: left;
-    padding-left: 40px;
-    align-items: center;
-    width: 60%;
-  }
-  .dashboard-redirect {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-  }
-  .dashboard-redirect a {
-    font-size: 1rem;
-    padding-right: 10px;
-  }
-  .footer-icon {
-    width: 33.33%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .footer-icon span {
-    font-size: 0.8rem;
-    padding-top: 0px;
-  }
-
-  .footer-icon i {
-    font-size: 2rem;
+  .dividerLine {
+    border-top: 1px solid #a0aec0; /* Equivalent to border-t border-gray-500 in Tailwind */
+    margin-top: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
+    margin-bottom: 1.25rem; /* Equivalent to my-5 in Tailwind, assuming default spacing */
   }
 </style>
 

@@ -2,13 +2,13 @@
 const { isForeign } = Astro.props;
 ---
 
-<div class="container">
+<div class="grade-container">
   <div class="grade-type">{isForeign ? "Website" : "Current"} difficulty:</div>
   <div class="readability">3.7</div>
 </div>
 
 <style>
-  .container {
+  .grade-container {
     width: 300px;
     height: 60px;
     border: 1px solid #000;
@@ -16,8 +16,6 @@ const { isForeign } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
   }
   .grade-type {
     font-size: 1.2rem;

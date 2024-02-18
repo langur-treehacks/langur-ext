@@ -1,0 +1,45 @@
+<nav class="footer">
+  <div class="footer-icon">
+    <i class="bi bi-person-circle"></i>
+    <span>Profile</span>
+  </div>
+  <div class="footer-icon">
+    <i class="bi bi-book"></i>
+    <span>Reading</span>
+  </div>
+  <div class="footer-icon">
+    <i class="bi bi-gear"></i>
+    <span>Settings</span>
+  </div>
+</nav>
+
+<style>
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 400px;
+    bottom: 0;
+  }
+  .footer-icon {
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .footer-icon span {
+    font-size: 0.8rem;
+    padding-top: 0px;
+  }
+
+  .footer-icon i {
+    font-size: 2rem;
+  }
+
+  .active {
+    fill: #000;
+    font-weight: bold;
+  }
+</style>
